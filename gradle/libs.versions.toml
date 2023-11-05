@@ -1,0 +1,23 @@
+[versions]
+jdkTarget = "8"
+jvmToolchain = "21"
+kotlinTarget = "1.9.0"
+kotlinPlugin = "1.9.20"
+kotlinxSerialization = "1.6.0"
+junit5 = "5.10.0"
+
+[libraries]
+parsus = { module = "me.alllex.parsus:parsus", version = "0.6.0" }
+
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerialization" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+
+# Intentionally using the modern test libraries to benefit from fixes and improvements.
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlinPlugin" }
+kotlin-test-junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5", version.ref = "kotlinPlugin" }
+
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit5" }
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlinPlugin" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinPlugin" }
