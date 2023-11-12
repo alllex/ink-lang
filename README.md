@@ -67,6 +67,25 @@ data class User(val name: String, val age: Int)
 The Ink document is evaluated into JSON value, taking nesting and overrides into account.
 Then `kotlinx.serialization` is used to convert the resulting JSON into a Kotlin object of a given type.
 
+## Roadmap
+
+There are a few things that are missing from the language:
+
+- Multi-line comments
+- Multi-line strings
+- Escaped string characters
+- Semicolon as a statement separator
+- Scientific notation for numbers
+- Hexadecimal numbers
+- Binary numbers
+- Maps
+
+Some of the things that may or may not be included in the future:
+
+- Local variables
+- String interpolation
+- Import of other files
+
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
