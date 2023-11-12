@@ -33,6 +33,9 @@ sealed interface InkValue : InkExpr
 value class InkString(val value: String) : InkValue
 
 @JvmInline
+value class InkBoolean(val value: Boolean) : InkValue
+
+@JvmInline
 value class InkInt(val value: Long) : InkValue
 
 @JvmInline
@@ -49,9 +52,10 @@ data class InkLet(
     val receiver: Receiver,
     val expr: InkExpr,
 ) : InkStmt {
-    constructor(id: String, value: String) : this(Receiver(id), InkString(value))
+    constructor(id: String, value: Boolean) : this(Receiver(id), InkBoolean(value))
     constructor(id: String, value: Int) : this(Receiver(id), InkInt(value.toLong()))
     constructor(id: String, value: Double) : this(Receiver(id), InkReal(value))
+    constructor(id: String, value: String) : this(Receiver(id), InkString(value))
     constructor(id: String, value: InkExpr) : this(Receiver(id), value)
 }
 

@@ -108,6 +108,20 @@ class InkGrammarTest {
     }
 
     @Test
+    fun letBooleanTrue() {
+        val parsed = InkParser().parseDoc("a = true")
+        val expected = InkDoc(listOf(InkLet("a", true)))
+        assertEquals(expected, parsed)
+    }
+
+    @Test
+    fun letBooleanFalse() {
+        val parsed = InkParser().parseDoc("a = false")
+        val expected = InkDoc(listOf(InkLet("a", false)))
+        assertEquals(expected, parsed)
+    }
+
+    @Test
     fun singleLetOnMultipleLines() {
         val parsed = InkParser().parseDoc(
             """
