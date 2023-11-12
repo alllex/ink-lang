@@ -32,8 +32,10 @@ class InkGrammar : Grammar<InkDoc>(debugMode = true) {
     val boolean by tru or fls
 
     val string by regexToken("\"[^\"]*\"") map { InkString(it.text.substring(1, it.text.lastIndex)) }
-    val int by regexToken("[-+]?[0-9]+") map { InkInt(it.text.toLong()) }
-    val real by regexToken("[-+]?[0-9]+\\.[0-9]+") map { InkReal(it.text.toDouble()) }
+
+    // TODO: disallow leading zeros
+    val int by regexToken("[-+]?\\d+(_+\\d+)*") map { InkInt(it.text.replace("_", "").toLong()) }
+    val real by regexToken("[-+]?\\d+(_+\\d+)*\\.\\d+(_+\\d+)*") map { InkReal(it.text.replace("_", "").toDouble()) }
 
     val value by nul or boolean or string or real or int
 

@@ -101,8 +101,22 @@ class InkGrammarTest {
     }
 
     @Test
+    fun letIntWithUnderscores() {
+        val parsed = InkParser().parseDoc("a = 42_000_000")
+        val expected = InkDoc(listOf(InkLet("a", 42_000_000)))
+        assertEquals(expected, parsed)
+    }
+
+    @Test
     fun letDouble() {
         val parsed = InkParser().parseDoc("a = -42.42")
+        val expected = InkDoc(listOf(InkLet("a", -42.42)))
+        assertEquals(expected, parsed)
+    }
+
+    @Test
+    fun letDoubleWithUnderscores() {
+        val parsed = InkParser().parseDoc("a = -4_2.4_2")
         val expected = InkDoc(listOf(InkLet("a", -42.42)))
         assertEquals(expected, parsed)
     }
