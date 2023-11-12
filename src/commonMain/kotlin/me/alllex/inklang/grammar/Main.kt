@@ -97,6 +97,7 @@ private fun InkLet.toFlatProps(parentId: NestedId): FlatProps {
 }
 
 private fun InkExpr.toJson(): JsonElement = when (this) {
+    InkNull -> JsonNull
     is InkBoolean -> JsonPrimitive(value)
     is InkInt -> JsonPrimitive(value)
     is InkReal -> JsonPrimitive(value)

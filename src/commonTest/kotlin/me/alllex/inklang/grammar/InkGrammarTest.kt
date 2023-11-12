@@ -115,6 +115,13 @@ class InkGrammarTest {
     }
 
     @Test
+    fun letNull() {
+        val parsed = InkParser().parseDoc("a = null")
+        val expected = InkDoc(listOf(InkLet("a", InkNull)))
+        assertEquals(expected, parsed)
+    }
+
+    @Test
     fun letBooleanFalse() {
         val parsed = InkParser().parseDoc("a = false")
         val expected = InkDoc(listOf(InkLet("a", false)))

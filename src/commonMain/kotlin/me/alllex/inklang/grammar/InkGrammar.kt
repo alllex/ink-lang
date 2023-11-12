@@ -26,6 +26,7 @@ class InkGrammar : Grammar<InkDoc>(debugMode = true) {
 
     val receiver by separated(id, -dot, allowEmpty = false) map { Receiver(it) }
 
+    val nul by literalToken("null") map { InkNull }
     val tru by literalToken("true") map { InkBoolean(true) }
     val fls by literalToken("false") map { InkBoolean(false) }
     val boolean by tru or fls
@@ -34,7 +35,7 @@ class InkGrammar : Grammar<InkDoc>(debugMode = true) {
     val int by regexToken("[-+]?[0-9]+") map { InkInt(it.text.toLong()) }
     val real by regexToken("[-+]?[0-9]+\\.[0-9]+") map { InkReal(it.text.toDouble()) }
 
-    val value by boolean or string or real or int
+    val value by nul or boolean or string or real or int
 
     val arg by ref(::expr)
 

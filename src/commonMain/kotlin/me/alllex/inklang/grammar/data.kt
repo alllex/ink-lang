@@ -29,6 +29,8 @@ sealed interface InkExpr
 
 sealed interface InkValue : InkExpr
 
+data object InkNull : InkExpr
+
 @JvmInline
 value class InkString(val value: String) : InkValue
 
